@@ -1,0 +1,16 @@
+.suggestion-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestion-action {
+  font-size: 14px;
+  width: 390px;
+  color: #333;
+  background-color: #fdfdfd;
+  border-radius: 12px;
+  height: 60px;
+  cursor: pointer;
+  margin-top: 20px;
+}
