@@ -1,4 +1,4 @@
-import { sum2Number } from "../../app/twosum/sum2number";
+import { sum2Number } from "../checkSum";
 
 describe("sum", () => {
   it("correctly adds two numbers", () => {

@@ -5,6 +5,11 @@ import { useRef } from "react";
 import { Provider } from "react-redux";
 import { makeStore } from "./store/store";
 import StoreProvider from "./StoreProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./component/theme/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +27,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <StoreProvider>
-          <div>{children}</div>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+            <ThemeProvider theme={theme}>
+              <div>{children}</div>
+              <ToastContainer />
+            </ThemeProvider>
+          </AppRouterCacheProvider>
         </StoreProvider>
       </body>
     </html>

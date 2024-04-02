@@ -5,13 +5,14 @@ body {
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .day-of-week {
-  margin-left: 20px;
+  margin-left: 10px;
   border-radius: 12px;
   width: 48px;
   height: 68px;
+  align-items: center;
   padding: 5px;
   background-color: #deb5e4;
 }
@@ -82,10 +83,10 @@ body {
   display: grid;
   place-items: end;
   cursor: pointer;
+  margin-right: 20px;
+  margin-top: 70px;
 }
-.container-icon {
-  margin-bottom: 50px;
-}
+
 .week-icon {
   display: flex;
   justify-content: center;

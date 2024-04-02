@@ -4,7 +4,7 @@ export interface TaskSuggestion {
 }
 
 const initialState: TaskSuggestion = {
-  tasks: [],
+  tasks: JSON.parse(localStorage.getItem("tasks") ?? "[]"),
 };
 
 const taskSlice = createSlice({

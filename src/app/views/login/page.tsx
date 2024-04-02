@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/jsx-no-undef */
 "use client";
 import React, { useState } from "react";
 import "./login.css";
@@ -22,6 +24,8 @@ import {
 import { RootState } from "../../store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import Image from "@/app/component/image/page";
 
 interface LoginStateProps {
   email: string;
@@ -55,52 +59,87 @@ const Login: React.FC<LoginStateProps> = (props) => {
     console.log(user);
 
     if (user) {
+      toast("Login Successfully");
       router.push("/views/todo");
       dispatch(loginUser({ email, password }));
     } else {
+      toast("Please Enter Email & Password");
       dispatch(setError("Email hoặc mật khẩu không hợp lệ"));
     }
     dispatch(setIsLoading(false));
   };
 
   return (
-    <div>
-      <div>
+    <div className="container-login">
+      <div
+        style={{
+          textAlign: "center",
+          display: "flex",
+          justifyContent: "center",
+          color: "#C67ED2",
+          fontSize: "18px",
+          fontStyle: "bold",
+          marginBottom: "20px",
+        }}
+      >
+        <div style={{ marginTop: "70px" }}>Log in to HabitHub</div>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div
           style={{
-            textAlign: "center",
+            width: "290px",
+            height: "auto",
+            fontSize: "14px",
             display: "flex",
             justifyContent: "center",
-            color: "#C67ED2",
-            fontSize: "18px",
+            alignItems: "center",
           }}
         >
-          Log in to HabitHub
+          Welcome back! Sign in using your social
         </div>
-        <div
-          style={{
-            width: "auto",
-            height: "40px",
-            fontSize: "18px",
-          }}
-        >
-          Welcome back! Sign in using your social account or email to continue
-          us
-        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+
+          fontSize: "14px",
+        }}
+      >
+        account or email to continue us{" "}
       </div>
       <div className="container-icon">
         <div className="icon">
-          <FontAwesomeIcon icon={faFacebook} style={{ color: "#4285F4" }} />
+          <Image
+            img="https://cdn.builder.io/api/v1/image/assets/TEMP/f5a93f6528d975a64a0499165ffbb7699356bcaef1fd8b66709c9bd6ad2861dc?apiKey=6e7174f322d04fd2ad45ce75a73be6c0&"
+            id={0}
+          />
         </div>
         <div className="icon">
-          <FontAwesomeIcon icon={faGoogle} />
+          <Image
+            img="https://cdn.builder.io/api/v1/image/assets/TEMP/95d9a12438f29ebd69cbc4acfa2a8e6b2770c451ea68ace77a97ffb4ca667c48?apiKey=6e7174f322d04fd2ad45ce75a73be6c0&"
+            id={0}
+          />
         </div>
         <div className="icon">
-          <FontAwesomeIcon icon={faApple} />
+          <Image
+            img="https://cdn.builder.io/api/v1/image/assets/TEMP/e513bd4f765bcb9049a63a5ed31f0990ee5e9ce2356b310d545cea6597f3a19e?apiKey=6e7174f322d04fd2ad45ce75a73be6c0&"
+            id={0}
+          />
         </div>
       </div>
 
-      <span>Or</span>
+      <span
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginBottom: "80px",
+          marginTop: "60px",
+        }}
+      >
+        Or
+      </span>
 
       <Input
         placeholder="Email"
@@ -114,9 +153,20 @@ const Login: React.FC<LoginStateProps> = (props) => {
         type="password"
         onChange={(e: any) => setPassword(e.target.value)}
       />
-      <Button label="Login" onClick={handleLogin} />
-
-      <Menu />
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+      >
+        <Button label="Login" onClick={handleLogin} />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Menu />
+      </div>
     </div>
   );
 };

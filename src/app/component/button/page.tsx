@@ -1,4 +1,4 @@
-import "./button.css";
+import "@/app/component/button/button.css";
 export interface ButtonProps {
   label: string;
   onClick: any;

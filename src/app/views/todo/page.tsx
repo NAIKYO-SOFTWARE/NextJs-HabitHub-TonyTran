@@ -12,6 +12,7 @@ import "./todo.css";
 import Button from "../../component/button/page";
 import { useRouter } from "next/navigation";
 import { Menu } from "../menu/menu";
+import { toast } from "react-toastify";
 export interface TodoProps {
   text: string;
   icon: any;
@@ -57,43 +58,50 @@ const data: TodoProps[] = [
 const Todo: React.FC = () => {
   const router = useRouter();
   const handleSuggestion = () => {
+    toast.success("Go To Suggestion ");
     router.push("/views/suggestions");
   };
   return (
-    <div className="todo-container">
-      <div className="header">
-        <div className="title">Let's make a contract</div>
-      </div>
-      <div className="content">
-        <span className="label">I will</span>
-        <ul>
-          {data.map((todo) => (
-            <li
-              key={todo.text}
-              className="todo-item"
-              style={{ display: "flex", justifyContent: "flex-start" }}
-            >
-              {todo.icon && <span className="todo-icon">{todo.icon}</span>}
-              {todo.text}
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="agreement">
-        <Button label="I Agree" onClick={handleSuggestion} />
-      </div>
-      <Menu />
-      {/* <div className="container-icon" style={{ marginTop: "50px" }}>
-        <div className="icon" onClick={handleCalendar}>
-          <FontAwesomeIcon icon={faCalendarDays} />
+    <div>
+      <div className="todo-container">
+        <div className="header">
+          <div className="title">Let's make a contract</div>
         </div>
-        <div className="icon">
-          <FontAwesomeIcon icon={faList} />
+        <div className="content">
+          <span className="label">I will</span>
+          <ul>
+            {data.map((todo) => (
+              <li
+                key={todo.text}
+                className="todo-item"
+                style={{ display: "flex", justifyContent: "flex-start" }}
+              >
+                {todo.icon && <span className="todo-icon">{todo.icon}</span>}
+                {todo.text}
+              </li>
+            ))}
+          </ul>
         </div>
-        <div className="icon">
-          <FontAwesomeIcon icon={faPerson} />
+      </div>
+      <div
+        className="container-agreement"
+        style={{ height: "50vh", width: "100%" }}
+      >
+        <div className="agreement">
+          <div style={{ marginTop: "50px" }}>
+            <Button label="I Agree" onClick={handleSuggestion} />
+          </div>
         </div>
-      </div> */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginRight: "20px",
+          }}
+        >
+          <Menu />
+        </div>
+      </div>
     </div>
   );
 };

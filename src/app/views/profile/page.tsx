@@ -29,25 +29,35 @@ const dataProfie: ProfileProps[] = [
 ];
 export const Profile: React.FC = () => {
   return (
-    <div>
-      <div>Profile</div>
+    <div style={{ height: " 100vh", background: "#F4D8F9" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Profile
+      </div>
 
       <div>
         {dataProfie.map((data) => {
           return (
-            <div
-              className="suggestion-action"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <div style={{ marginLeft: "10px" }}>{data.label}</div>
-              <FontAwesomeIcon
-                icon={faRightLong}
-                style={{ marginRight: "10px" }}
-              />
+            <div style={{ justifyContent: "center", display: "flex" }}>
+              <div
+                className="suggestion-action"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div style={{ marginLeft: "10px" }}>{data.label}</div>
+                <FontAwesomeIcon
+                  icon={faRightLong}
+                  style={{ marginRight: "10px" }}
+                />
+              </div>
             </div>
           );
         })}

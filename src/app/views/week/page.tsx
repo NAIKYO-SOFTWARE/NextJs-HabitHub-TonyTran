@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { removeTask } from "../../store/reducer/taskStore";
 import { RootState, useAppSelector } from "../../store/store";
+import { useRouter } from "next/navigation";
 
 interface WeekProps {
   day: string;
@@ -59,25 +60,55 @@ const Week: React.FC<WeekProps> = () => {
   const handleDailyClick = (daily: string) => {
     setSelectedDaily(daily);
   };
+  if (typeof window !== "undefined") {
+    // Perform localStorage action
+    const item = localStorage.getItem("key");
+  }
+  const router = useRouter();
+  const handleAddSuggest = () => {
+    router.push("/views/suggestions");
+  };
+
+  const dispatch = useDispatch();
 
   const [hasTasks, setHasTasks] = useState(false);
   useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setHasTasks(true);
+    if (typeof window !== "undefined") {
+      const storedTasks = localStorage.getItem("tasks");
+      if (storedTasks) {
+        setHasTasks(true);
+      }
     }
   }, [hasTasks]);
 
   console.log(listTask);
 
   return (
-    <div style={{ backgroundColor: "#F5F5F5" }}>
-      <span style={{ color: "black" }}>Today</span>
-      <div>
+    <div style={{ backgroundColor: "#F5F5F5", height: "101vh", width: "100%" }}>
+      <div style={{ background: "#F3C4FB" }}>
+        <div
+          style={{
+            color: "black",
+            display: "flex ",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <span style={{ marginTop: "20px" }}>Today</span>
+        </div>
+
         <div className="container-day-of-week">
           {dataWeek.map((week) => (
             <div key={week.day} className="day-of-week">
-              <div>{week.day}</div>
+              <div
+                style={{
+                  display: " flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                {week.day}
+              </div>
               <div className="week">{week.number}</div>
             </div>
           ))}
@@ -119,13 +150,6 @@ const Week: React.FC<WeekProps> = () => {
       {hasTasks ? (
         <div>
           {listTask.tasks.map((data: any) => {
-            function dispatch(arg0: {
-              payload: { id: any };
-              type: "task/removeTask";
-            }): void {
-              throw new Error("Function not implemented.");
-            }
-
             return (
               <div>
                 <div className="suggestion-actions">
@@ -158,8 +182,6 @@ const Week: React.FC<WeekProps> = () => {
                         dispatch(
                           removeTask({
                             id: data.id,
-                            // label: data.label,
-                            // color: data.color,
                           })
                         )
                       }
@@ -180,14 +202,15 @@ const Week: React.FC<WeekProps> = () => {
           </div>
         </>
       )}
-      <div className="container-btn">
+      <div className="container-btn" onClick={handleAddSuggest}>
         <Image
           img="https://cdn.builder.io/api/v1/image/assets/TEMP/704211d0e2028a995a29ac601f06916f2929aab11fbdd654b752a0258e3916c5?apiKey=6e7174f322d04fd2ad45ce75a73be6c0&"
           id={0}
         />
       </div>
-
-      <Menu />
+      <div style={{ marginTop: " 200px" }}>
+        <Menu />
+      </div>
     </div>
   );
 };
