@@ -130,31 +130,31 @@ const Login: React.FC<LoginStateProps> = (props) => {
         </div>
       </div>
 
-      <span
+      <div className="underline-container">
+        <hr className="underline left" /> <div className="or-text">Or</div>{" "}
+        <hr className="underline right" />{" "}
+      </div>
+      <div style={{ marginTop: "100px" }}>
+        <Input
+          placeholder="Email"
+          type="text"
+          value={email}
+          onChange={(e: any) => setEmail(e.target.value)}
+        />
+        <Input
+          placeholder="Password"
+          value={password}
+          type="password"
+          onChange={(e: any) => setPassword(e.target.value)}
+        />
+      </div>
+
+      <div
         style={{
           display: "flex",
           justifyContent: "center",
-          marginBottom: "80px",
-          marginTop: "60px",
+          marginTop: "100px",
         }}
-      >
-        Or
-      </span>
-
-      <Input
-        placeholder="Email"
-        type="text"
-        value={email}
-        onChange={(e: any) => setEmail(e.target.value)}
-      />
-      <Input
-        placeholder="Password"
-        value={password}
-        type="password"
-        onChange={(e: any) => setPassword(e.target.value)}
-      />
-      <div
-        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
       >
         <Button label="Login" onClick={handleLogin} />
       </div>

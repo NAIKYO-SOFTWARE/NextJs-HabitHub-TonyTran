@@ -22,7 +22,7 @@ export const Menu: React.FC = () => {
   };
   return (
     <div>
-      <div className="container-icon" style={{ marginTop: "50px" }}>
+      <div className="container-icon" style={{ marginTop: "150px" }}>
         <div className="icon">
           <FontAwesomeIcon icon={faCalendar} onClick={handleCalendar} />
         </div>
