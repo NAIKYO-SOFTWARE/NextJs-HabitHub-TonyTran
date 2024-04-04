@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 "use client";
 import Button from "../../component/button/buttoncomponent";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./suggest.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -73,7 +73,6 @@ const dataSuggest: SuggestProp[] = [
 const Suggestion: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-
   const handleSeeAll = () => {
     router.push("/views/week");
   };
