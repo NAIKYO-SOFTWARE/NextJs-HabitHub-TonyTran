@@ -1,3 +1,4 @@
+"use client";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export interface TaskSuggestion {
   tasks: { id: any; icon: any; label: any; color: any }[];
@@ -32,17 +33,7 @@ const taskSlice = createSlice({
     },
   },
 });
-// export const updateLocalStorage = createAsyncThunk<void, TaskSuggestion>(
-//   "tasks/updateLocalStorage",
-//   async (tasks) => {
-//     try {
-//       localStorage.setItem("tasks", JSON.stringify(tasks));
-//     } catch (error) {
-//       console.error("Error updating localStorage:", error);
-//       // Handle potential errors (optional)
-//     }
-//   }
-// );
+
 export const { addTask, removeTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

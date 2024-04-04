@@ -1,14 +1,14 @@
-version: "4.0"
+version: "3.8"
 
 services:
-  frontend:
-    container_name: my-next-app
-    build:
-      context: .
-      dockerfile: Dockerfile
+  nextjs:
+    container_name: nextjs-dev
+    build: .
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
-
-    command: npm run dev
+      - .:/app # Bind mount the source code into the container
+      - /app/node_modules # Use the node_modules from the container
+    environment:
+      - NODE_ENV=development
+    command: npm run dev # Override the default command to start Next.js in development mode
