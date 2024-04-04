@@ -9,7 +9,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import "./todo.css";
-import Button from "../../component/button/page";
+import Button from "../../component/button/buttoncomponent";
 import { useRouter } from "next/navigation";
 import { Menu } from "../menu/menu";
 import { toast } from "react-toastify";

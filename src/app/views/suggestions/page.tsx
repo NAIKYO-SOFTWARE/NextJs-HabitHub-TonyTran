@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 "use client";
-import Button from "../../component/button/page";
+import Button from "../../component/button/buttoncomponent";
 import React from "react";
 import "./suggest.css";
 import { useNavigate } from "react-router-dom";
@@ -70,7 +70,7 @@ const dataSuggest: SuggestProp[] = [
   },
 ];
 
-const Suggestion: React.FC<SuggestProp> = () => {
+const Suggestion: React.FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 

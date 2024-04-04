@@ -1,11 +1,5 @@
 "use client";
 
-import {
-  faCalendar,
-  faList,
-  faPerson,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useRouter } from "next/navigation";
 

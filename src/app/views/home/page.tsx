@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import React from "react";
-import Button from "../../component/button/page";
+import Button from "../../component/button/buttoncomponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faApple,
@@ -13,7 +13,7 @@ import "@/app/views/home/home.css";
 import { useNavigate } from "react-router-dom";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import Image from "@/app/component/image/page";
+import Image from "@/app/component/image/imagecomponent";
 
 const Home: React.FC = () => {
   const handleButton = () => {

@@ -9,7 +9,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "./component/theme/page";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,10 +27,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <StoreProvider>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ThemeProvider theme={theme}>
-              <div>{children}</div>
-              <ToastContainer />
-            </ThemeProvider>
+            <div>{children}</div>
+            <ToastContainer />
           </AppRouterCacheProvider>
         </StoreProvider>
       </body>

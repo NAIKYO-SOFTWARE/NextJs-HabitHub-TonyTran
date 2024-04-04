@@ -5,7 +5,7 @@ import React, { useDebugValue, useEffect, useState } from "react";
 
 import "./week.css";
 
-import Image from "../../component/image/page";
+import Image from "../../component/image/imagecomponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import { Menu } from "../menu/menu";
@@ -52,7 +52,7 @@ const dataWeek: WeekProps[] = [
   },
 ];
 
-const Week: React.FC<WeekProps> = () => {
+const Week: React.FC = () => {
   const listTask = useAppSelector((state) => state.task);
 
   const [selectedDaily, setSelectedDaily] = useState("All");

@@ -27,7 +27,7 @@ const dataProfie: ProfileProps[] = [
     label: "Log out",
   },
 ];
-export const Profile: React.FC = () => {
+const Profile: React.FC = () => {
   return (
     <div style={{ height: " 100vh", background: "#F4D8F9" }}>
       <div

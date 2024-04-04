@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import "./addtask.css";
-import Input from "../../component/form/input/page";
-import Button from "../../component/button/page";
+import Input from "../../component/form/input/inputcomponent";
+import Button from "../../component/button/buttoncomponent";
 import { useDispatch } from "react-redux";
 import { addTask } from "../../store/reducer/taskStore";
 
@@ -19,9 +19,7 @@ const repeatOptions: RepeatOption[] = [
 
 const weekDays: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
-interface AddTaskProps {}
-
-export const AddTask: React.FC = () => {
+const AddTask: React.FC = () => {
   const [newTask, setNewTask] = useState("");
   const [newDesc, setNewDesc] = useState("");
   const [selectedRepeat, setSelectedRepeat] = useState(repeatOptions[1]); // Set initial selected repeat

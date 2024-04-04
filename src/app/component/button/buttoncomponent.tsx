@@ -1,5 +1,5 @@
 import "@/app/component/button/button.css";
-export interface buttonProps {
+interface buttonProps {
   label: string;
   onClick: any;
 }

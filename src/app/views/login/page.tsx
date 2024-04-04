@@ -3,8 +3,8 @@
 "use client";
 import React, { useState } from "react";
 import "./login.css";
-import Input from "../../component/form/input/page";
-import Button from "../../component/button/page";
+import Input from "../../component/form/input/inputcomponent";
+import Button from "../../component/button/buttoncomponent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Menu } from "../menu/menu";
 
@@ -25,9 +25,9 @@ import { RootState } from "../../store/store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import Image from "@/app/component/image/page";
+import Image from "@/app/component/image/imagecomponent";
 
-interface LoginStateProps {
+export interface LoginStateProps {
   email: string;
   password: string;
   isLoading: boolean;
@@ -44,7 +44,7 @@ const dataUser = [
   },
 ];
 
-const Login: React.FC<LoginStateProps> = (props) => {
+const Login: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();

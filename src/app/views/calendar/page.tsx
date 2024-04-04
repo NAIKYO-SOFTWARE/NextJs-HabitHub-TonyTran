@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client";
 import React from "react";
-import Image from "../../component/image/page";
+import Image from "../../component/image/imagecomponent";
 import { useRouter } from "next/navigation";
 
-export const Calendar: React.FC = () => {
+const Calendar: React.FC = () => {
   const router = useRouter();
   const handleCalendar = () => {
     router.push("/views/week");
