@@ -22,11 +22,14 @@ const taskSlice = createSlice({
       state.tasks = tasks;
       localStorage.setItem("tasks", JSON.stringify(tasks));
     },
-    removeTask: (state, action) => {
-      const taskList = [...current(state.tasks)];
-      let newTaskList = taskList.filter((task) => task.id !== action.payload);
-      state.tasks = newTaskList;
-      localStorage.setItem("tasks", JSON.stringify(state.tasks));
+    removeTask: (state, action: { payload: { id: any } }) => {
+      const tasks = current(state.tasks).filter(
+        (task: any) => task.id !== action.payload.id
+      );
+      // Update state using spread operator for immutability
+      state.tasks = tasks;
+      // Update localStorage after state update
+      localStorage.setItem("tasks", JSON.stringify(tasks));
     },
   },
 });

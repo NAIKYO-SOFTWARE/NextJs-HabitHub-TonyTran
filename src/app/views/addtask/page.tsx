@@ -120,19 +120,19 @@ const AddTask: React.FC = () => {
         <div className="flex gap-0 items-start pt-5 pr-20 pl-5 mt-4 bg-white rounded-xl text-stone-900 text-opacity-80">
           <div className="flex flex-col grow shrink-0 basis-0 w-fit">
             <div className="text-sm">Set a tag for your task</div>
-            <div className="flex mt-2 text-xs font-medium justify-content text-center p-5">
-              <div className="justify-center self-end px-2 py-2.5 bg-sky-200 rounded-xl">
+            <div className="flex gap-0 mt-2 text-xs font-medium">
+              <div className="justify-center self-end px-2 py-2.5 mb-5 bg-sky-200 rounded-xl">
                 Daily Routine
               </div>
-              <div className="flex flex-col items-start px-6 pt-2 pb-5 rounded-xl ">
+              <div className="flex flex-col items-start px-6 pt-2 pb-5 rounded-xl">
                 <div className="justify-center px-2 py-2.5 bg-sky-200 rounded-xl">
                   Study Routine
                 </div>
               </div>
-              <div className="flex justify-center text-center bg-sky-200 rounded-xl">
-                Add More +
-              </div>
             </div>
+          </div>
+          <div className="justify-center px-2 py-2.5 mt-[34px] text-xs font-medium bg-sky-200 rounded-xl">
+            Add More +
           </div>
         </div>
       </div>
