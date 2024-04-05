@@ -1,11 +1,10 @@
 "use client";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-export interface TaskSuggestion {
-  tasks: { id: any; icon: any; label: any; color: any }[];
-}
+import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
+const storedTodoList =
+  typeof window !== "undefined" ? window.localStorage.getItem("tasks") : [];
 
-const initialState: TaskSuggestion = {
-  tasks: JSON.parse(localStorage.getItem("tasks") ?? "[]"),
+const initialState = {
+  tasks: typeof storedTodoList === "string" ? JSON.parse(storedTodoList) : [],
 };
 
 const taskSlice = createSlice({
@@ -23,13 +22,11 @@ const taskSlice = createSlice({
       state.tasks = tasks;
       localStorage.setItem("tasks", JSON.stringify(tasks));
     },
-    removeTask(state, action: { payload: { id: any } }) {
-      console.log("Remove Task ", removeTask);
-      const tasks = state.tasks.filter((task) => {
-        return task.id !== action.payload.id;
-      });
-      state.tasks = tasks;
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+    removeTask: (state, action) => {
+      const taskList = [...current(state.tasks)];
+      let newTaskList = taskList.filter((task) => task.id !== action.payload);
+      state.tasks = newTaskList;
+      localStorage.setItem("tasks", JSON.stringify(state.tasks));
     },
   },
 });
