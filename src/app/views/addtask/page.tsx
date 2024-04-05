@@ -13,11 +13,9 @@ interface RepeatOption {
 
 const repeatOptions: RepeatOption[] = [
   { label: "Daily", selected: false },
-  { label: "Weekly", selected: true }, // Set "Weekly" as selected initially
+  { label: "Weekly", selected: true },
   { label: "Monthly", selected: false },
 ];
-
-const weekDays: string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 const AddTask: React.FC = () => {
   const [newTask, setNewTask] = useState("");
@@ -34,88 +32,107 @@ const AddTask: React.FC = () => {
   };
 
   return (
-    <div className="add-task-container">
-      <div className="add-task-header">
-        <div className="title">
-          <span>⭐</span> New Task
-        </div>
-      </div>
-
-      <div className="add-task-body">
-        <div className="task-details">
-          <Input
-            placeholder="Name your new task"
-            value={newTask}
-            onChange={(e: any) => setNewTask(e.target.value)}
-            type="text"
-          />
-          <Input
-            placeholder="Describe it"
-            value={newDesc}
-            onChange={(e: any) => setNewDesc(e.target.value)}
-            type="text"
-          />
-        </div>
-        <div className="card-color-section">
-          <p className="card-color-label">Card Color</p>
-          <div className="circles" style={{ display: "flex" }}>
-            <div className="circle circle--emerald" />
-            <div className="circle circle--fuchsia" />
-            <div className="circle circle--orange" />
-            <div className="circle circle--teal" />
-            <div className="circle circle--red" />
-            <div className="circle circle--yellow" />
-            <div className="circle circle--indigo" />
-            <div className="circle circle--fuchsia-dark" />
+    <div className="bg-[#BDE0FE] h-screen">
+      <div className="add-task-container">
+        <div className="flex flex-col font-medium text-black">
+          <div className="self-center text-6xl">⭐</div>
+          <div className="mt-2 text-2xl flex justify-center">New Task</div>
+          <div className="mt-2 text-xs text-stone-900 text-opacity-80 justify-center flex">
+            Click to change the emoji
           </div>
         </div>
-        <div className="repeat-section">
-          <p className="repeat-label">Repeat</p>
-          <div className="repeat-options">
-            {repeatOptions.map((option) => (
-              <div
-                key={option.label}
-                className={`repeat-option ${option.selected ? "selected" : ""}`}
-                onClick={() => handleRepeatChange(option)}
-              >
-                {option.label}
-              </div>
-            ))}
+        <div className="add-task-body">
+          <div className="flex justify-center text-center ">
+            <Input
+              placeholder="Name your new task"
+              value={newTask}
+              onChange={(e: any) => setNewTask(e.target.value)}
+              type="text"
+            />
           </div>
-          {selectedRepeat.label === "Weekly" && (
-            <div className="week-days">
-              {weekDays.map((day) => (
-                <div
-                  key={day}
-                  className="week-day"
-                  onClick={() => handleDaySelection(day)}
-                >
-                  {day}
-                </div>
-              ))}
+          <div className="flex justify-center text-center ">
+            <Input
+              placeholder="Describe it"
+              value={newDesc}
+              onChange={(e: any) => setNewDesc(e.target.value)}
+              type="text"
+            />
+          </div>
+          <div className="flex flex-col px-5 max-w-[368px]">
+            <p className="w-full text-sm font-bold text-stone-900 text-opacity-80 mt-10  ">
+              Card Color
+            </p>
+            <div className="flex gap-4 pr-7 mt-5">
+              <div className="shrink-0 w-8 h-8 rounded-full border-solid bg-emerald-200 bg-opacity-60 border-[3px] border-neutral-100 stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 rounded-full border-white border-solid bg-fuchsia-700 bg-opacity-60 border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-orange-200 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-teal-200 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-red-600 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-yellow-100 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-indigo-500 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
+              <div className="shrink-0 w-8 h-8 bg-fuchsia-500 rounded-full border-white border-solid border-[3px] stroke-[3px]" />
             </div>
-          )}
-          {selectedRepeat.label !== "Daily" && (
-            <div className="repeat-frequency">
-              <p>Repeat</p>
-              <div className="repeat-frequency-input">
-                <input type="number" />
-                <div className="repeat-frequency-unit">
-                  {selectedRepeat.label === "Weekly" ? "week" : "month"}
-                </div>
+          </div>
+          <div className="mt-12 text-sm font-bold text-stone-900 text-opacity-80 ">
+            Repeat
+          </div>
+          <div className="flex flex-col px-5 py-6 mt-2.5 w-full text-sm bg-white rounded-xl text-stone-900 text-opacity-80">
+            <div>Set a cycle for your task</div>
+            <div className="flex gap-5 justify-between items-center px-11 mt-3.5 whitespace-nowrap bg-gray-200 rounded-2xl">
+              <div className="self-stretch my-auto">Daily</div>
+              <div className="justify-center items-start self-stretch px-10 py-2.5 font-medium bg-orange-200 rounded-2xl">
+                Weekly
+              </div>
+              <div className="self-stretch my-auto">Monthly</div>
+            </div>
+            <div className="flex gap-4 mt-4 mr-5 ml-4 text-xs font-light text-black whitespace-nowrap">
+              <div className="flex justify-center items-center w-8 h-8 bg-orange-200 rounded-full">
+                Mon
+              </div>
+              <div className="flex justify-center items-center px-2 w-8 h-8 bg-orange-200 rounded-full">
+                Tue
+              </div>
+              <div className="flex justify-center items-center w-8 h-8 bg-orange-200 rounded-full">
+                Wed
+              </div>
+              <div className="flex justify-center items-center px-2 w-8 h-8 bg-orange-200 rounded-full">
+                Thu
+              </div>
+              <div className="flex justify-center items-center px-2.5 w-8 h-8 bg-orange-200 rounded-full">
+                Fri
+              </div>
+              <div className="flex justify-center items-center w-8 h-8 bg-gray-200 rounded-full ">
+                Sat
+              </div>
+              <div className="flex z-10 justify-center items-center w-8 h-8 bg-gray-200 rounded-full ">
+                Sun
               </div>
             </div>
-          )}
-        </div>
-        <div className="tags-section">
-          <p className="tags-label">Tags</p>
-          <div className="tags-input">
-            <input type="text" placeholder="Add a tag" />
+            <div className="flex gap-5 justify-between mt-4 w-full">
+              <div>Repeat</div>
+              <div className="flex gap-1.5">
+                <div className="grow">Every week</div>
+                <div>&gt;</div>
+              </div>
+            </div>
           </div>
-          <div className="existing-tags">
-            <div className="tag">Daily Routine</div>
-            <div className="tag">Study Routine</div>
-            <div className="tag">Add More ++ </div>
+        </div>
+        <div className="flex gap-0 items-start pt-5 pr-20 pl-5 mt-4 bg-white rounded-xl text-stone-900 text-opacity-80">
+          <div className="flex flex-col grow shrink-0 basis-0 w-fit">
+            <div className="text-sm">Set a tag for your task</div>
+            <div className="flex mt-2 text-xs font-medium justify-content text-center p-5">
+              <div className="justify-center self-end px-2 py-2.5 bg-sky-200 rounded-xl">
+                Daily Routine
+              </div>
+              <div className="flex flex-col items-start px-6 pt-2 pb-5 rounded-xl ">
+                <div className="justify-center px-2 py-2.5 bg-sky-200 rounded-xl">
+                  Study Routine
+                </div>
+              </div>
+              <div className="flex justify-center text-center bg-sky-200 rounded-xl">
+                Add More +
+              </div>
+            </div>
           </div>
         </div>
       </div>

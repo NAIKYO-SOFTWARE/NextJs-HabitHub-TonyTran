@@ -56,9 +56,13 @@ const Week: React.FC = () => {
   const listTask = useAppSelector((state) => state.task);
 
   const [selectedDaily, setSelectedDaily] = useState("All");
+  const [selectedDay, setSelectedDay] = useState("Sun");
 
   const handleDailyClick = (daily: string) => {
     setSelectedDaily(daily);
+  };
+  const handleDayClick = (day: string) => {
+    setSelectedDay(day);
   };
 
   const router = useRouter();
@@ -99,7 +103,11 @@ const Week: React.FC = () => {
 
           <div className="container-day-of-week">
             {dataWeek.map((week) => (
-              <div key={week.day} className="day-of-week">
+              <div
+                key={week.day}
+                className={`day-of-week ${selectedDay === week.day ? "selected-day" : "none-selected-day"}`}
+                onClick={() => handleDayClick(week.day)}
+              >
                 <div
                   style={{
                     display: " flex",

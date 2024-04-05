@@ -54,6 +54,12 @@ body {
 .selected-all {
   background-color: #ba68c8;
 }
+.selected-day {
+  background-color: #ba68c8;
+}
+.none-selected-day {
+  background-color: #deb5e4;
+}
 
 .selected-daily {
   background-color: #f5f5f5;
